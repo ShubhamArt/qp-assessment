@@ -339,3 +339,19 @@ The API will return appropriate HTTP status codes and error messages for invalid
 - 401 Unauthorized: Unauthorized access, typically when authentication fails.
 - 404 Not Found: Resource not found (e.g., when an item does not exist).
 - 500 Internal Server Error: An error occurred on the server.
+
+# Database Tables Overview
+This project uses the following database tables to store data related to users, grocery items, orders, and order items. The tables are mapped using Java Persistence API (JPA) annotations, and the relationships between them are outlined below
+##### 1. grocery_items Table
+This table stores information about each grocery item available for booking.
+##### 2. orders Table
+This table stores information about the orders placed by users.
+##### 3. order_items Table
+This table stores details of the grocery items included in each order.
+##### 4. users Table
+This table stores information about the users of the grocery booking system, including their roles (Admin or User).
+---
+# Relationships Overview:
+- **User ↔ Order**: A user can have multiple orders, but each order is associated with one user. This is represented by the foreign key user_id in the orders table.
+- **Order ↔ OrderItem**: An order can have multiple order items. Each order_item references an order via the order_id foreign key.
+- **OrderItem ↔ GroceryItem**: Each order item is associated with a grocery item. The relationship is mapped via the grocery_item_id foreign key in the order_items table.
